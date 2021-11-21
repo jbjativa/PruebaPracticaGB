@@ -18,6 +18,9 @@ mono_crash.*
 #Database Files .bak - mdf and ldf
 BAK/
 
+appsettings.json
+appsettings.Development.json
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
