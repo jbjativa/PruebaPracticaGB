@@ -70,7 +70,7 @@ namespace PruebaPracticaGB
             {
                 endpoints.MapControllerRoute(
                    name: "default",
-                   pattern: "{controller=Home}/{action=Indez}/{id?}"
+                   pattern: "{controller=Home}/{action=Index}/{id?}"
                     ); ;
                 endpoints.MapRazorPages();
             });
