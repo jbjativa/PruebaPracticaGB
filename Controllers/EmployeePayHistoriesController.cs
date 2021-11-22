@@ -26,7 +26,7 @@ namespace PruebaPracticaGB.Controllers
         }
 
         // GET: EmployeePayHistories/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, DateTime? RateChangeDate)
         {
             if (id == null)
             {
@@ -35,7 +35,7 @@ namespace PruebaPracticaGB.Controllers
 
             var employeePayHistory = await _context.EmployeePayHistory
                 .Include(e => e.BusinessEntity)
-                .FirstOrDefaultAsync(m => m.BusinessEntityId == id);
+                .FirstOrDefaultAsync(m => m.BusinessEntityId == id && m.RateChangeDate == RateChangeDate);
             if (employeePayHistory == null)
             {
                 return NotFound();
@@ -69,14 +69,14 @@ namespace PruebaPracticaGB.Controllers
         }
 
         // GET: EmployeePayHistories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, DateTime? RateChangeDate)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employeePayHistory = await _context.EmployeePayHistory.FindAsync(id);
+            var employeePayHistory = await _context.EmployeePayHistory.FindAsync(id, RateChangeDate);
             if (employeePayHistory == null)
             {
                 return NotFound();
