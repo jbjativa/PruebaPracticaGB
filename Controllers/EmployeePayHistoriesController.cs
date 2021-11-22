@@ -9,23 +9,23 @@ using PruebaPracticaGB.Models;
 
 namespace PruebaPracticaGB.Controllers
 {
-    public class EmployeesController : Controller
+    public class EmployeePayHistoriesController : Controller
     {
         private readonly AdventureWorksContext _context;
 
-        public EmployeesController(AdventureWorksContext context)
+        public EmployeePayHistoriesController(AdventureWorksContext context)
         {
             _context = context;
         }
 
-        // GET: Employees
+        // GET: EmployeePayHistories
         public async Task<IActionResult> Index()
         {
-            var adventureWorksContext = _context.Employee.Include(e => e.BusinessEntity);
+            var adventureWorksContext = _context.EmployeePayHistory.Include(e => e.BusinessEntity);
             return View(await adventureWorksContext.ToListAsync());
         }
 
-        // GET: Employees/Details/5
+        // GET: EmployeePayHistories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,42 @@ namespace PruebaPracticaGB.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
+            var employeePayHistory = await _context.EmployeePayHistory
                 .Include(e => e.BusinessEntity)
                 .FirstOrDefaultAsync(m => m.BusinessEntityId == id);
-            if (employee == null)
+            if (employeePayHistory == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(employeePayHistory);
         }
 
-        // GET: Employees/Create
+        // GET: EmployeePayHistories/Create
         public IActionResult Create()
         {
-            ViewData["BusinessEntityId"] = new SelectList(_context.Person, "BusinessEntityId", "FirstName");
+            ViewData["BusinessEntityId"] = new SelectList(_context.Employee, "BusinessEntityId", "Gender");
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: EmployeePayHistories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BusinessEntityId,NationalIdnumber,LoginId,OrganizationLevel,JobTitle,BirthDate,MaritalStatus,Gender,HireDate,SalariedFlag,VacationHours,SickLeaveHours,CurrentFlag,Rowguid,ModifiedDate")] Employee employee)
+        public async Task<IActionResult> Create([Bind("BusinessEntityId,RateChangeDate,Rate,PayFrequency,ModifiedDate")] EmployeePayHistory employeePayHistory)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(employeePayHistory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BusinessEntityId"] = new SelectList(_context.Person, "BusinessEntityId", "FirstName", employee.BusinessEntityId);
-            return View(employee);
+            ViewData["BusinessEntityId"] = new SelectList(_context.Employee, "BusinessEntityId", "Gender", employeePayHistory.BusinessEntityId);
+            return View(employeePayHistory);
         }
 
-        // GET: Employees/Edit/5
+        // GET: EmployeePayHistories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +76,23 @@ namespace PruebaPracticaGB.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var employeePayHistory = await _context.EmployeePayHistory.FindAsync(id);
+            if (employeePayHistory == null)
             {
                 return NotFound();
             }
-            ViewData["BusinessEntityId"] = new SelectList(_context.Person, "BusinessEntityId", "FirstName", employee.BusinessEntityId);
-            return View(employee);
+            ViewData["BusinessEntityId"] = new SelectList(_context.Employee, "BusinessEntityId", "Gender", employeePayHistory.BusinessEntityId);
+            return View(employeePayHistory);
         }
 
-        // POST: Employees/Edit/5
+        // POST: EmployeePayHistories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BusinessEntityId,NationalIdnumber,LoginId,OrganizationLevel,JobTitle,BirthDate,MaritalStatus,Gender,HireDate,SalariedFlag,VacationHours,SickLeaveHours,CurrentFlag,Rowguid,ModifiedDate")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("BusinessEntityId,RateChangeDate,Rate,PayFrequency,ModifiedDate")] EmployeePayHistory employeePayHistory)
         {
-            if (id != employee.BusinessEntityId)
+            if (id != employeePayHistory.BusinessEntityId)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace PruebaPracticaGB.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(employeePayHistory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.BusinessEntityId))
+                    if (!EmployeePayHistoryExists(employeePayHistory.BusinessEntityId))
                     {
                         return NotFound();
                     }
@@ -117,11 +117,11 @@ namespace PruebaPracticaGB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BusinessEntityId"] = new SelectList(_context.Person, "BusinessEntityId", "FirstName", employee.BusinessEntityId);
-            return View(employee);
+            ViewData["BusinessEntityId"] = new SelectList(_context.Employee, "BusinessEntityId", "Gender", employeePayHistory.BusinessEntityId);
+            return View(employeePayHistory);
         }
 
-        // GET: Employees/Delete/5
+        // GET: EmployeePayHistories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +129,31 @@ namespace PruebaPracticaGB.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
+            var employeePayHistory = await _context.EmployeePayHistory
                 .Include(e => e.BusinessEntity)
                 .FirstOrDefaultAsync(m => m.BusinessEntityId == id);
-            if (employee == null)
+            if (employeePayHistory == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(employeePayHistory);
         }
 
-        // POST: Employees/Delete/5
+        // POST: EmployeePayHistories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            _context.Employee.Remove(employee);
+            var employeePayHistory = await _context.EmployeePayHistory.FindAsync(id);
+            _context.EmployeePayHistory.Remove(employeePayHistory);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool EmployeePayHistoryExists(int id)
         {
-            return _context.Employee.Any(e => e.BusinessEntityId == id);
+            return _context.EmployeePayHistory.Any(e => e.BusinessEntityId == id);
         }
     }
 }
