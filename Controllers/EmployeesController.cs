@@ -6,23 +6,40 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PruebaPracticaGB.Models;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace PruebaPracticaGB.Controllers
 {
     public class EmployeesController : Controller
     {
+        private bool isAllowed = false;
         private readonly AdventureWorksContext _context;
 
         public EmployeesController(AdventureWorksContext context)
         {
             _context = context;
+            //if (User.IsAuthenticated)
+            //{
+            //    isAllowed = true;
+            //}
+            //Solo usuarios validos deberian ver el contenido
         }
 
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            var adventureWorksContext = _context.Employee.Include(e => e.BusinessEntity);
-            return View(await adventureWorksContext.ToListAsync());
+            //if (isAllowed)
+            //{
+                var adventureWorksContext = _context.Employee.Include(e => e.BusinessEntity);
+                return View(await adventureWorksContext.ToListAsync());
+            //}
+            //else
+            //{ 
+            //    return NotFound();
+            //}
+            
+
         }
 
         // GET: Employees/Details/5

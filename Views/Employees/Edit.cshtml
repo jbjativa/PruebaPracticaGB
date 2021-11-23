@@ -14,72 +14,72 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BusinessEntityId" />
             <div class="form-group">
-                <label asp-for="NationalIdnumber" class="control-label"></label>
-                <input asp-for="NationalIdnumber" class="form-control" />
+                <label asp-for=@Model.NationalIdnumber value=@Model.NationalIdnumber class="control-label"></label>
+                <input asp-for=@Model.NationalIdnumber value=@Model.NationalIdnumber class="form-control" />
                 <span asp-validation-for="NationalIdnumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LoginId" class="control-label"></label>
-                <input asp-for="LoginId" class="form-control" />
+                <label asp-for=@Model.LoginId value=@Model.LoginId class="control-label"></label>
+                <input asp-for=@Model.LoginId value=@Model.LoginId class="form-control" />
                 <span asp-validation-for="LoginId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JobTitle" class="control-label"></label>
-                <input asp-for="JobTitle" class="form-control" />
+                <label asp-for=@Model.JobTitle value=@Model.JobTitle class="control-label"></label>
+                <input asp-for=@Model.JobTitle value=@Model.JobTitle class="form-control" />
                 <span asp-validation-for="JobTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
+                <label asp-for=@Model.BirthDate value=@Model.BirthDate class="control-label"></label>
+                <input asp-for=@Model.BirthDate value=@Model.BirthDate class="form-control" />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaritalStatus" class="control-label"></label>
-                <input asp-for="MaritalStatus" class="form-control" />
+                <label asp-for=@Model.MaritalStatus value=@Model.MaritalStatus class="control-label"></label>
+                <input asp-for=@Model.MaritalStatus value=@Model.MaritalStatus class="form-control" />
                 <span asp-validation-for="MaritalStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
+                <label asp-for=@Model.Gender value=@Model.Gender class="control-label"></label>
+                <input asp-for=@Model.Gender value=@Model.Gender class="form-control" />
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HireDate" class="control-label"></label>
-                <input asp-for="HireDate" class="form-control" />
+                <label asp-for=@Model.HireDate value=@Model.HireDate class="control-label"></label>
+                <input asp-for=@Model.HireDate value=@Model.HireDate class="form-control" />
                 <span asp-validation-for="HireDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SalariedFlag" class="control-label"></label>
-                <input asp-for="SalariedFlag" class="form-control" />
+                <label asp-for=@Model.SalariedFlag  value=@Model.SalariedFlag class="control-label"></label>
+                <input asp-for=@Model.SalariedFlag  value=@Model.SalariedFlag class="form-control" />
                 <span asp-validation-for="SalariedFlag" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VacationHours" class="control-label"></label>
-                <input asp-for="VacationHours" class="form-control" />
+                <label asp-for=@Model.VacationHours value=@Model.VacationHours class="control-label"></label>
+                <input asp-for=@Model.VacationHours value=@Model.VacationHours class="form-control" />
                 <span asp-validation-for="VacationHours" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SickLeaveHours" class="control-label"></label>
-                <input asp-for="SickLeaveHours" class="form-control" />
+                <label asp-for=@Model.SickLeaveHours value=@Model.SickLeaveHours class="control-label"></label>
+                <input asp-for=@Model.SickLeaveHours value=@Model.SickLeaveHours class="form-control" />
                 <span asp-validation-for="SickLeaveHours" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CurrentFlag" class="control-label"></label>
-                <input asp-for="CurrentFlag" class="form-control" />
+                <label asp-for=@Model.CurrentFlag value=@Model.CurrentFlag class="control-label"></label>
+                <input asp-for=@Model.CurrentFlag value=@Model.CurrentFlag class="form-control" />
                 <span asp-validation-for="CurrentFlag" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rowguid" class="control-label"></label>
-                <input asp-for="Rowguid" class="form-control" />
+                <label asp-for=@Model.Rowguid value=@Model.Rowguid class="control-label"></label>
+                <input asp-for=@Model.Rowguid value=@Model.Rowguid class="form-control" />
                 <span asp-validation-for="Rowguid" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ModifiedDate" class="control-label"></label>
-                <input asp-for="ModifiedDate" class="form-control" />
+                <label asp-for=@Model.ModifiedDate value=@Model.ModifiedDate class="control-label"></label>
+                <input asp-for=@Model.ModifiedDate value=@Model.ModifiedDate class="form-control" />
                 <span asp-validation-for="ModifiedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" asp-route-id="@Model.BusinessEntityId" />
             </div>
         </form>
     </div>
