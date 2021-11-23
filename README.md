@@ -1,5 +1,8 @@
 # PruebaPracticaGB
 Prueba Practica para BG
+Usando la base de Datos AdventureWorks2014 en SQLServerManagementStudio 18
+Usando AspNetCore, MVC, EntityFrameWork y Visual Studio 2022
+
 
 Comandos Utilizados:
 Nugget Package Manager Console.
